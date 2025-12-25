@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn create next-app . --typescript --eslint --no-tailwind --app --turbopack --import-alias \"@/*\")",
+      "Bash(yarn install:*)",
+      "Bash(yarn add:*)",
+      "Bash(npx prisma init --datasource-provider sqlite)",
+      "Bash(npx prisma migrate dev:*)",
+      "Bash(tree:*)",
+      "Bash(npx prisma generate:*)",
+      "Bash(yarn dev)",
+      "WebFetch(domain:pris.ly)",
+      "WebFetch(domain:www.prisma.io)"
+    ]
+  }
+}

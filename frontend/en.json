@@ -1,0 +1,188 @@
+{
+  "common": {
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "noData": "No data"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "transactions": "Transactions",
+    "goals": "Goals",
+    "profile": "Profile",
+    "analytics": "Analytics"
+  },
+  "home": {
+    "title": "Finance Tracker",
+    "subtitle": "Smart personal finance tracker with AI insights",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "features": {
+      "transactions": {
+        "title": "Transaction Management",
+        "description": "Track income and expenses, categorize spending"
+      },
+      "analytics": {
+        "title": "Analytics & Charts",
+        "description": "Visualize your finances with beautiful charts"
+      },
+      "ai": {
+        "title": "AI Insights",
+        "description": "Personalized recommendations for budget optimization"
+      },
+      "goals": {
+        "title": "Financial Goals",
+        "description": "Set goals and track your savings progress"
+      }
+    }
+  },
+  "login": {
+    "title": "Welcome Back!",
+    "subtitle": "Sign in to your account",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Login",
+    "loggingIn": "Logging in...",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Register",
+    "errors": {
+      "invalidEmail": "Invalid email format",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "loginFailed": "Login failed"
+    }
+  },
+  "register": {
+    "title": "Create Account",
+    "subtitle": "Start managing your finances",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "registerButton": "Register",
+    "registering": "Registering...",
+    "hasAccount": "Already have an account?",
+    "loginLink": "Login",
+    "errors": {
+      "nameTooShort": "Name must be at least 2 characters",
+      "invalidEmail": "Invalid email format",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "registerFailed": "Registration failed"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "balance": "Balance",
+    "income": "Income",
+    "expenses": "Expenses",
+    "thisMonth": "This Month",
+    "currentMonth": "Current Month",
+    "previousMonth": "Previous Month",
+    "change": "Change",
+    "recentTransactions": "Recent Transactions",
+    "viewAll": "View All",
+    "expensesByCategory": "Expenses by Category",
+    "monthlyTrend": "Monthly Trend",
+    "monthlyIncomeExpense": "Income and Expenses for Recent Months",
+    "comparison": "Comparison with Last Month",
+    "topExpenses": "Top 5 Biggest Expenses",
+    "aiInsights": "AI Insights",
+    "registrationDate": "Registration Date"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "addNew": "Add Transaction",
+    "editTransaction": "Edit Transaction",
+    "type": "Type",
+    "category": "Category",
+    "amount": "Amount",
+    "date": "Date",
+    "description": "Description",
+    "income": "Income",
+    "expense": "Expense",
+    "filter": "Filter",
+    "all": "All",
+    "search": "Search by description...",
+    "noTransactions": "No transactions",
+    "addFirst": "Add your first transaction!",
+    "actions": "Actions",
+    "deleteConfirm": "Are you sure you want to delete this transaction?",
+    "deleteError": "Error deleting transaction",
+    "categories": {
+      "food": "Food",
+      "transport": "Transport",
+      "entertainment": "Entertainment",
+      "utilities": "Utilities",
+      "healthcare": "Healthcare",
+      "shopping": "Shopping",
+      "salary": "Salary",
+      "freelance": "Freelance",
+      "investment": "Investment",
+      "other": "Other"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "personalInfo": "Personal Information",
+    "settings": "Settings",
+    "theme": "Theme",
+    "language": "Language",
+    "currency": "Currency",
+    "lightMode": "Light",
+    "darkMode": "Dark",
+    "accountSettings": "Account Settings",
+    "appearance": "Appearance",
+    "preferences": "Preferences"
+  },
+  "languages": {
+    "ru": "Русский",
+    "en": "English",
+    "uk": "Українська"
+  },
+  "currencies": {
+    "UAH": "Hryvnia (₴)",
+    "USD": "US Dollar ($)",
+    "EUR": "Euro (€)",
+    "GBP": "Pound Sterling (£)",
+    "RUB": "Russian Ruble (₽)",
+    "PLN": "Polish Zloty (zł)"
+  },
+  "ai": {
+    "title": "AI Analysis",
+    "advisor": "AI Financial Advisor",
+    "insights": "Insights",
+    "analyzing": "Analyzing your finances...",
+    "getInsights": "Get AI Analysis",
+    "refresh": "Refresh Analysis",
+    "description": "Get personalized recommendations to optimize your budget based on analysis of your spending",
+    "error": "Error getting AI analysis. Check OPENAI_API_KEY settings"
+  },
+  "goals": {
+    "title": "Financial Goals",
+    "addNew": "Add Goal",
+    "editGoal": "Edit Goal",
+    "noGoals": "No goals",
+    "addFirst": "Create your first financial goal!",
+    "goalTitle": "Goal title",
+    "targetAmount": "Target amount",
+    "currentAmount": "Current amount",
+    "deadline": "Deadline",
+    "progress": "Progress",
+    "saved": "Saved",
+    "target": "Target",
+    "remaining": "Remaining",
+    "daysLeft": "days left",
+    "monthlyNeeded": "Monthly savings needed",
+    "completed": "Goal achieved!",
+    "addProgress": "Add Progress",
+    "amount": "Amount",
+    "deleteConfirm": "Are you sure you want to delete this goal?"
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "common": {
+    "login": "Увійти",
+    "register": "Реєстрація",
+    "logout": "Вийти",
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "delete": "Видалити",
+    "edit": "Редагувати",
+    "close": "Закрити",
+    "loading": "Завантаження...",
+    "error": "Помилка",
+    "success": "Успішно",
+    "noData": "Немає даних"
+  },
+  "nav": {
+    "dashboard": "Панель керування",
+    "transactions": "Транзакції",
+    "goals": "Цілі",
+    "profile": "Профіль",
+    "analytics": "Аналітика"
+  },
+  "home": {
+    "title": "Finance Tracker",
+    "subtitle": "Розумний трекер особистих фінансів з AI-порадами",
+    "loginButton": "Увійти",
+    "registerButton": "Реєстрація",
+    "features": {
+      "transactions": {
+        "title": "Керування транзакціями",
+        "description": "Відстежуйте доходи та витрати, категоризуйте трати"
+      },
+      "analytics": {
+        "title": "Аналітика і графіки",
+        "description": "Візуалізація ваших фінансів з красивими графіками"
+      },
+      "ai": {
+        "title": "AI-поради",
+        "description": "Персональні рекомендації для оптимізації бюджету"
+      },
+      "goals": {
+        "title": "Фінансові цілі",
+        "description": "Ставте цілі та відстежуйте прогрес заощаджень"
+      }
+    }
+  },
+  "login": {
+    "title": "Ласкаво просимо!",
+    "subtitle": "Увійдіть до свого акаунту",
+    "email": "Email",
+    "password": "Пароль",
+    "loginButton": "Увійти",
+    "loggingIn": "Вхід...",
+    "noAccount": "Немає акаунту?",
+    "registerLink": "Зареєструватися",
+    "errors": {
+      "invalidEmail": "Невірний формат email",
+      "passwordTooShort": "Пароль має бути мінімум 6 символів",
+      "loginFailed": "Помилка при вході"
+    }
+  },
+  "register": {
+    "title": "Створіть акаунт",
+    "subtitle": "Почніть керувати своїми фінансами",
+    "name": "Ім'я",
+    "email": "Email",
+    "password": "Пароль",
+    "registerButton": "Зареєструватися",
+    "registering": "Реєстрація...",
+    "hasAccount": "Вже є акаунт?",
+    "loginLink": "Увійти",
+    "errors": {
+      "nameTooShort": "Ім'я має бути мінімум 2 символи",
+      "invalidEmail": "Невірний формат email",
+      "passwordTooShort": "Пароль має бути мінімум 6 символів",
+      "registerFailed": "Помилка при реєстрації"
+    }
+  },
+  "dashboard": {
+    "title": "Панель керування",
+    "welcome": "Ласкаво просимо",
+    "balance": "Баланс",
+    "income": "Доходи",
+    "expenses": "Витрати",
+    "thisMonth": "За цей місяць",
+    "currentMonth": "Поточний місяць",
+    "previousMonth": "Попередній місяць",
+    "change": "Зміна",
+    "recentTransactions": "Останні транзакції",
+    "viewAll": "Переглянути всі",
+    "expensesByCategory": "Витрати за категоріями",
+    "monthlyTrend": "Динаміка по місяцях",
+    "monthlyIncomeExpense": "Доходи та витрати за останні місяці",
+    "comparison": "Порівняння з минулим місяцем",
+    "topExpenses": "Топ-5 найбільших витрат",
+    "aiInsights": "AI-рекомендації",
+    "registrationDate": "Дата реєстрації"
+  },
+  "transactions": {
+    "title": "Транзакції",
+    "addNew": "Додати транзакцію",
+    "editTransaction": "Редагувати транзакцію",
+    "type": "Тип",
+    "category": "Категорія",
+    "amount": "Сума",
+    "date": "Дата",
+    "description": "Опис",
+    "income": "Дохід",
+    "expense": "Витрата",
+    "filter": "Фільтр",
+    "all": "Всі",
+    "search": "Пошук за описом...",
+    "noTransactions": "Немає транзакцій",
+    "addFirst": "Додайте свою першу транзакцію!",
+    "actions": "Дії",
+    "deleteConfirm": "Ви впевнені, що хочете видалити цю транзакцію?",
+    "deleteError": "Помилка при видаленні транзакції",
+    "categories": {
+      "food": "Їжа",
+      "transport": "Транспорт",
+      "entertainment": "Розваги",
+      "utilities": "Комунальні послуги",
+      "healthcare": "Здоров'я",
+      "shopping": "Покупки",
+      "salary": "Зарплата",
+      "freelance": "Фріланс",
+      "investment": "Інвестиції",
+      "other": "Інше"
+    }
+  },
+  "profile": {
+    "title": "Профіль",
+    "personalInfo": "Особиста інформація",
+    "settings": "Налаштування",
+    "theme": "Тема",
+    "language": "Мова",
+    "currency": "Валюта",
+    "lightMode": "Світла",
+    "darkMode": "Темна",
+    "accountSettings": "Налаштування акаунту",
+    "appearance": "Зовнішній вигляд",
+    "preferences": "Вподобання"
+  },
+  "languages": {
+    "ru": "Русский",
+    "en": "English",
+    "uk": "Українська"
+  },
+  "currencies": {
+    "UAH": "Гривня (₴)",
+    "USD": "Долар США ($)",
+    "EUR": "Євро (€)",
+    "GBP": "Фунт стерлінгів (£)",
+    "RUB": "Російський рубль (₽)",
+    "PLN": "Польський злотий (zł)"
+  },
+  "ai": {
+    "title": "AI-аналіз",
+    "advisor": "AI Фінансовий Радник",
+    "insights": "Рекомендації",
+    "analyzing": "Аналіз ваших фінансів...",
+    "getInsights": "Отримати AI-аналіз",
+    "refresh": "Оновити аналіз",
+    "description": "Отримайте персональні рекомендації для оптимізації вашого бюджету на основі аналізу ваших витрат",
+    "error": "Помилка при отриманні AI-аналізу. Перевірте налаштування OPENAI_API_KEY"
+  },
+  "goals": {
+    "title": "Фінансові цілі",
+    "addNew": "Додати ціль",
+    "editGoal": "Редагувати ціль",
+    "noGoals": "Немає цілей",
+    "addFirst": "Створіть свою першу фінансову ціль!",
+    "goalTitle": "Назва цілі",
+    "targetAmount": "Цільова сума",
+    "currentAmount": "Поточна сума",
+    "deadline": "Термін",
+    "progress": "Прогрес",
+    "saved": "Заощаджено",
+    "target": "Ціль",
+    "remaining": "Залишилось",
+    "daysLeft": "днів залишилось",
+    "monthlyNeeded": "Потрібно відкладати щомісяця",
+    "completed": "Ціль досягнута!",
+    "addProgress": "Додати прогрес",
+    "amount": "Сума",
+    "deleteConfirm": "Ви впевнені, що хочете видалити цю ціль?"
+  }
+}

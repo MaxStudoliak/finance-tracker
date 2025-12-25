@@ -1,0 +1,188 @@
+{
+  "common": {
+    "login": "Войти",
+    "register": "Регистрация",
+    "logout": "Выйти",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редагувати",
+    "close": "Закрыть",
+    "loading": "Загрузка...",
+    "error": "Ошибка",
+    "success": "Успешно",
+    "noData": "Нет данных"
+  },
+  "nav": {
+    "dashboard": "Панель управления",
+    "transactions": "Транзакции",
+    "goals": "Цели",
+    "profile": "Профиль",
+    "analytics": "Аналитика"
+  },
+  "home": {
+    "title": "Finance Tracker",
+    "subtitle": "Умный трекер личных финансов с AI-советами",
+    "loginButton": "Войти",
+    "registerButton": "Регистрация",
+    "features": {
+      "transactions": {
+        "title": "Управление транзакциями",
+        "description": "Отслеживайте доходы и расходы, категоризируйте траты"
+      },
+      "analytics": {
+        "title": "Аналитика и графики",
+        "description": "Визуализация ваших финансов с красивыми графиками"
+      },
+      "ai": {
+        "title": "AI-советы",
+        "description": "Персональные рекомендации по оптимизации бюджета"
+      },
+      "goals": {
+        "title": "Финансовые цели",
+        "description": "Ставьте цели и отслеживайте прогресс накоплений"
+      }
+    }
+  },
+  "login": {
+    "title": "Добро пожаловать!",
+    "subtitle": "Войдите в свой аккаунт",
+    "email": "Email",
+    "password": "Пароль",
+    "loginButton": "Войти",
+    "loggingIn": "Вход...",
+    "noAccount": "Нет аккаунта?",
+    "registerLink": "Зарегистрироваться",
+    "errors": {
+      "invalidEmail": "Неверный формат email",
+      "passwordTooShort": "Пароль должен быть минимум 6 символов",
+      "loginFailed": "Ошибка при входе"
+    }
+  },
+  "register": {
+    "title": "Создайте аккаунт",
+    "subtitle": "Начните управлять своими финансами",
+    "name": "Имя",
+    "email": "Email",
+    "password": "Пароль",
+    "registerButton": "Зарегистрироваться",
+    "registering": "Регистрация...",
+    "hasAccount": "Уже есть аккаунт?",
+    "loginLink": "Войти",
+    "errors": {
+      "nameTooShort": "Имя должно быть минимум 2 символа",
+      "invalidEmail": "Неверный формат email",
+      "passwordTooShort": "Пароль должен быть минимум 6 символов",
+      "registerFailed": "Ошибка при регистрации"
+    }
+  },
+  "dashboard": {
+    "title": "Панель управления",
+    "welcome": "Добро пожаловать",
+    "balance": "Баланс",
+    "income": "Доходы",
+    "expenses": "Расходы",
+    "thisMonth": "За этот месяц",
+    "currentMonth": "Текущий месяц",
+    "previousMonth": "Предыдущий месяц",
+    "change": "Изменение",
+    "recentTransactions": "Последние транзакции",
+    "viewAll": "Посмотреть все",
+    "expensesByCategory": "Расходы по категориям",
+    "monthlyTrend": "Динамика по месяцам",
+    "monthlyIncomeExpense": "Доходы и расходы за последние месяцы",
+    "comparison": "Сравнение с прошлым месяцем",
+    "topExpenses": "Топ-5 самых больших трат",
+    "aiInsights": "AI-рекомендации",
+    "registrationDate": "Дата регистрации"
+  },
+  "transactions": {
+    "title": "Транзакции",
+    "addNew": "Добавить транзакцию",
+    "editTransaction": "Редактировать транзакцию",
+    "type": "Тип",
+    "category": "Категория",
+    "amount": "Сумма",
+    "date": "Дата",
+    "description": "Описание",
+    "income": "Доход",
+    "expense": "Расход",
+    "filter": "Фильтр",
+    "all": "Все",
+    "search": "Поиск по описанию...",
+    "noTransactions": "Нет транзакций",
+    "addFirst": "Добавьте свою первую транзакцию!",
+    "actions": "Действия",
+    "deleteConfirm": "Вы уверены, что хотите удалить эту транзакцию?",
+    "deleteError": "Ошибка при удалении транзакции",
+    "categories": {
+      "food": "Еда",
+      "transport": "Транспорт",
+      "entertainment": "Развлечения",
+      "utilities": "Коммунальные услуги",
+      "healthcare": "Здоровье",
+      "shopping": "Покупки",
+      "salary": "Зарплата",
+      "freelance": "Фриланс",
+      "investment": "Инвестиции",
+      "other": "Другое"
+    }
+  },
+  "profile": {
+    "title": "Профиль",
+    "personalInfo": "Личная информация",
+    "settings": "Настройки",
+    "theme": "Тема",
+    "language": "Язык",
+    "currency": "Валюта",
+    "lightMode": "Светлая",
+    "darkMode": "Темная",
+    "accountSettings": "Настройки аккаунта",
+    "appearance": "Внешний вид",
+    "preferences": "Предпочтения"
+  },
+  "languages": {
+    "ru": "Русский",
+    "en": "English",
+    "uk": "Українська"
+  },
+  "currencies": {
+    "UAH": "Гривна (₴)",
+    "USD": "Доллар США ($)",
+    "EUR": "Евро (€)",
+    "GBP": "Фунт стерлингов (£)",
+    "RUB": "Российский рубль (₽)",
+    "PLN": "Польский злотый (zł)"
+  },
+  "ai": {
+    "title": "AI-анализ",
+    "advisor": "AI Финансовый Советник",
+    "insights": "Рекомендации",
+    "analyzing": "Анализ ваших финансов...",
+    "getInsights": "Получить AI-анализ",
+    "refresh": "Обновить анализ",
+    "description": "Получите персональные рекомендации по оптимизации вашего бюджета на основе анализа ваших трат",
+    "error": "Ошибка при получении AI-анализа. Проверьте настройки OPENAI_API_KEY"
+  },
+  "goals": {
+    "title": "Финансовые цели",
+    "addNew": "Добавить цель",
+    "editGoal": "Редактировать цель",
+    "noGoals": "Нет целей",
+    "addFirst": "Создайте свою первую финансовую цель!",
+    "goalTitle": "Название цели",
+    "targetAmount": "Целевая сумма",
+    "currentAmount": "Текущая сумма",
+    "deadline": "Срок",
+    "progress": "Прогресс",
+    "saved": "Сохранено",
+    "target": "Цель",
+    "remaining": "Осталось",
+    "daysLeft": "дней осталось",
+    "monthlyNeeded": "Нужно откладывать ежемесячно",
+    "completed": "Цель достигнута!",
+    "addProgress": "Добавить прогресс",
+    "amount": "Сумма",
+    "deleteConfirm": "Вы уверены, что хотите удалить эту цель?"
+  }
+}

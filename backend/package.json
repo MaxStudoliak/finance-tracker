@@ -1,0 +1,38 @@
+{
+  "name": "finance-tracker-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Finance Tracker",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate",
+    "prisma:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/adapter-libsql": "^7.2.0",
+    "@prisma/client": "5.22.0",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^6.15.0",
+    "prisma": "5.22.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.10.5",
+    "prisma": "^7.2.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

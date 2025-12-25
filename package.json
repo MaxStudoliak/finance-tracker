@@ -1,0 +1,19 @@
+{
+  "name": "finance-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn workspace finance-tracker-backend dev\" \"yarn workspace finance-tracker-frontend dev\"",
+    "dev:backend": "yarn workspace finance-tracker-backend dev",
+    "dev:frontend": "yarn workspace finance-tracker-frontend dev",
+    "build": "yarn workspace finance-tracker-backend build && yarn workspace finance-tracker-frontend build",
+    "start": "yarn workspace finance-tracker-backend start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

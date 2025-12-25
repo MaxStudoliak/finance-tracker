@@ -1,11 +1,11 @@
 import express, { Express, Request, Response } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import authRoutes from './routes/authRoutes'
-import transactionRoutes from './routes/transactionRoutes'
-import analyticsRoutes from './routes/analyticsRoutes'
-import aiRoutes from './routes/aiRoutes'
-import goalRoutes from './routes/goalRoutes'
+import authRoutes from './src/routes/authRoutes'
+import transactionRoutes from './src/routes/transactionRoutes'
+import analyticsRoutes from './src/routes/analyticsRoutes'
+import aiRoutes from './src/routes/aiRoutes'
+import goalRoutes from './src/routes/goalRoutes'
 
 dotenv.config()
 

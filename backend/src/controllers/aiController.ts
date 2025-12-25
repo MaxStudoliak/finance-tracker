@@ -1,15 +1,21 @@
 import { Request, Response } from 'express'
 import OpenAI from 'openai'
-import { prisma } from '../prisma'
+import { prisma } from '../../prisma'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-})
+const openai = process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'sk-your-openai-api-key-here'
+  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : null
 
 export const analyzeFinances = async (req: Request, res: Response) => {
   try {
     if (!req.user) {
       return res.status(401).json({ error: 'Не авторизован' })
+    }
+
+    if (!openai) {
+      return res.status(503).json({
+        error: 'OpenAI API key не настроен. Пожалуйста, добавьте ваш API ключ в backend/.env'
+      })
     }
 
     // Получить транзакции пользователя за последний месяц

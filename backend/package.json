@@ -4,16 +4,9 @@
     "description": "Backend API for Finance Tracker",
     "main": "server.ts",
     "scripts": {
-        "dev": "tsx server.ts",
         "build": "prisma generate && tsc",
-        "start": "node dist/server.js",
-        "postinstall": "prisma generate",
-        "prisma:migrate": "prisma migrate dev",
-        "prisma:generate": "prisma generate",
-        "prisma:push": "prisma db push",
-        "prisma:studio": "prisma studio",
-        "postbuild": "prisma migrate deploy",
-        "deploy": "yarn build && yarn start"
+        "start": "prisma migrate deploy && node dist/server.js",
+        "dev": "tsx server.ts"
     },
     "dependencies": {
         "@google/generative-ai": "^0.24.1",

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { GoogleGenerativeAI } from '@google/generative-ai'
-import { prisma } from '../../prisma'
+import { prisma } from '../prisma'
 
 // Получить название валюты
 const getCurrencyName = (currency: string, lang: string): string => {

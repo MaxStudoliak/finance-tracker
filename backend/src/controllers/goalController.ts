@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { prisma } from '../../prisma'
+import { prisma } from '../prisma'
 
 // GET /api/goals - получить все цели пользователя
 export const getGoals = async (req: Request, res: Response) => {

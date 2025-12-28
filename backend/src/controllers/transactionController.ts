@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { prisma } from '../../prisma'
+import { prisma } from '../prisma'
 
 // Получить все транзакции пользователя
 export const getTransactions = async (req: Request, res: Response) => {

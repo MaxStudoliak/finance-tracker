@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { prisma } from '../../prisma';
+import { prisma } from '../prisma';
 
 // Получить все бюджеты пользователя
 export const getBudgets = async (req: Request, res: Response) => {

@@ -1,4 +1,4 @@
-import { prisma } from '../../prisma';
+import { prisma } from '../prisma';
 import { addDays, addWeeks, addMonths, addYears, isAfter, isSameDay, startOfDay } from 'date-fns';
 
 export async function processRecurringTransactions() {

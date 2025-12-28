@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { prisma } from '../../prisma';
+import { prisma } from '../prisma';
 
 // Получить все повторяющиеся транзакции
 export const getRecurringTransactions = async (req: Request, res: Response) => {

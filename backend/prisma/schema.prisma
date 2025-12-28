@@ -6,20 +6,22 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id            String        @id @default(cuid())
-  email         String        @unique
-  name          String?
-  password      String?       // Для email/password auth
-  createdAt     DateTime      @default(now())
+  id                  String        @id @default(cuid())
+  email               String        @unique
+  name                String?
+  password            String?       // Для email/password auth
+  googleId            String?       @unique // Для Google OAuth
+  createdAt           DateTime      @default(now())
 
-  transactions  Transaction[]
-  goals         Goal[]
-  budgets       Budget[]
+  transactions        Transaction[]
+  goals               Goal[]
+  budgets             Budget[]
+  recurringTransactions RecurringTransaction[]
 }
 
 model Transaction {
@@ -63,4 +65,24 @@ model Budget {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, category, month])
+}
+
+model RecurringTransaction {
+  id          String   @id @default(cuid())
+  amount      Float
+  type        String   // "income" или "expense"
+  category    String
+  description String?
+  frequency   String   // "daily", "weekly", "monthly", "yearly"
+  startDate   DateTime
+  endDate     DateTime?
+  lastProcessed DateTime?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isActive])
 }

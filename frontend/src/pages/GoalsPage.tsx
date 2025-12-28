@@ -15,6 +15,7 @@ import GoalCard from '../components/GoalCard'
 import GoalForm from '../components/GoalForm'
 import AddProgressDialog from '../components/AddProgressDialog'
 import DeleteConfirmationModal from '../components/DeleteConfirmationModal'
+import api from '../services/api'
 
 interface Goal {
   id: string
@@ -38,13 +39,8 @@ export default function GoalsPage() {
 
   const fetchGoals = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/goals', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-      const data = await response.json()
-      setGoals(data.goals || [])
+      const response = await api.get('/goals')
+      setGoals(response.data.goals || [])
     } catch (error) {
       console.error('Error fetching goals:', error)
     } finally {
@@ -65,12 +61,7 @@ export default function GoalsPage() {
     if (!deletingGoalId) return
 
     try {
-      await fetch(`http://localhost:5001/api/goals/${deletingGoalId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
+      await api.delete(`/goals/${deletingGoalId}`)
       fetchGoals()
     } catch (error) {
       console.error('Error deleting goal:', error)
@@ -103,12 +94,20 @@ export default function GoalsPage() {
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
       <Header />
 
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 }, px: { xs: 2, sm: 3 } }}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between',
+          alignItems: { xs: 'stretch', sm: 'center' },
+          mb: { xs: 2, md: 4 },
+          gap: 2
+        }}>
           <Typography
             variant="h4"
             sx={{
               fontWeight: 700,
+              fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.125rem' },
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
@@ -121,7 +120,9 @@ export default function GoalsPage() {
             variant="contained"
             startIcon={<Add />}
             onClick={() => setFormOpen(true)}
+            fullWidth={{ xs: true, sm: false }}
             sx={{
+              minHeight: 48,
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               '&:hover': {
                 background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',

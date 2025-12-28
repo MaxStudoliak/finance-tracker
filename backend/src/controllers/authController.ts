@@ -131,3 +131,27 @@ export const getMe = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Ошибка при получении данных' })
   }
 }
+
+export const googleCallback = async (req: Request, res: Response) => {
+  try {
+    // Пользователь уже аутентифицирован через passport
+    const user = req.user as any
+
+    if (!user) {
+      return res.redirect(`${process.env.FRONTEND_URL}/login?error=auth_failed`)
+    }
+
+    // Генерация JWT токена
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET || 'secret',
+      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+    )
+
+    // Редирект на frontend с токеном
+    res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}`)
+  } catch (error) {
+    console.error('Google callback error:', error)
+    res.redirect(`${process.env.FRONTEND_URL}/login?error=auth_failed`)
+  }
+}

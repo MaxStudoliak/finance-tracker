@@ -8,6 +8,7 @@ import {
   TextField
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import api from '../services/api'
 
 interface Props {
   open: boolean
@@ -27,16 +28,9 @@ export default function AddProgressDialog({ open, onClose, onSuccess, goalId, go
     setLoading(true)
 
     try {
-      const response = await fetch(`http://localhost:5001/api/goals/${goalId}/add-progress`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify({ amount: parseFloat(amount) })
+      await api.patch(`/goals/${goalId}/add-progress`, {
+        amount: parseFloat(amount)
       })
-
-      if (!response.ok) throw new Error('Failed to add progress')
 
       setAmount('')
       onSuccess()

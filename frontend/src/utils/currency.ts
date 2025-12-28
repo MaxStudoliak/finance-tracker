@@ -1,4 +1,4 @@
-import { Currency } from '../store/themeStore'
+import { Currency, useThemeStore } from '../store/themeStore'
 
 export const getCurrencySymbol = (currency: Currency): string => {
   const symbols: Record<Currency, string> = {
@@ -39,4 +39,11 @@ export const getCurrencyName = (currency: Currency): string => {
     PLN: 'Польський злотий',
   }
   return names[currency]
+}
+
+// Hook для використання форматування валюти з поточною валютою користувача
+export const useCurrency = () => {
+  const currency = useThemeStore((state) => state.currency)
+
+  return (amount: number) => formatCurrency(amount, currency)
 }

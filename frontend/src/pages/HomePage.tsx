@@ -1,6 +1,13 @@
 import { Container, Typography, Box, Button, Card, CardContent } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { AttachMoney, TrendingUp, Psychology, Flag } from '@mui/icons-material'
+import {
+  AttachMoney,
+  TrendingUp,
+  Psychology,
+  Flag,
+  AccountBalanceWallet,
+  Loop
+} from '@mui/icons-material'
 import { useThemeStore } from '../store/themeStore'
 import ThemeLanguageSwitcher from '../components/ThemeLanguageSwitcher'
 import { useTranslation } from 'react-i18next'
@@ -16,6 +23,18 @@ export default function HomePage() {
       title: t('home.features.transactions.title'),
       description: t('home.features.transactions.description'),
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    },
+    {
+      icon: <AccountBalanceWallet sx={{ fontSize: 56 }} />,
+      title: t('home.features.budgets.title'),
+      description: t('home.features.budgets.description'),
+      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+    },
+    {
+      icon: <Loop sx={{ fontSize: 56 }} />,
+      title: t('home.features.recurring.title'),
+      description: t('home.features.recurring.description'),
+      gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
     },
     {
       icon: <TrendingUp sx={{ fontSize: 56 }} />,
@@ -60,13 +79,14 @@ export default function HomePage() {
       </Box>
 
       <Container maxWidth="lg">
-        <Box sx={{ py: 10, textAlign: 'center' }}>
+        <Box sx={{ py: { xs: 4, sm: 6, md: 10 }, px: { xs: 2, sm: 3 }, textAlign: 'center' }}>
           <Typography
             variant="h2"
             component="h1"
             gutterBottom
             sx={{
               fontWeight: 800,
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
@@ -80,6 +100,7 @@ export default function HomePage() {
             variant="h5"
             sx={{
               mb: 4,
+              fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
               fontWeight: 400,
               color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'text.secondary',
             }}
@@ -87,18 +108,27 @@ export default function HomePage() {
             {t('home.subtitle')}
           </Typography>
 
-          <Box sx={{ mt: 5, mb: 8 }}>
+          <Box sx={{
+            mt: { xs: 4, md: 5 },
+            mb: { xs: 4, md: 8 },
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            gap: 2,
+            justifyContent: 'center',
+            px: { xs: 2, sm: 0 }
+          }}>
             <Button
               variant="contained"
               size="large"
               component={Link}
               to="/login"
               sx={{
-                mr: 2,
                 px: 4,
                 py: 1.5,
-                fontSize: '1.1rem',
+                fontSize: { xs: '1rem', md: '1.1rem' },
+                minHeight: 48,
               }}
+              fullWidth={{ xs: true, sm: false }}
             >
               {t('home.loginButton')}
             </Button>
@@ -110,12 +140,14 @@ export default function HomePage() {
               sx={{
                 px: 4,
                 py: 1.5,
-                fontSize: '1.1rem',
+                fontSize: { xs: '1rem', md: '1.1rem' },
+                minHeight: 48,
                 borderWidth: 2,
                 '&:hover': {
                   borderWidth: 2,
                 },
               }}
+              fullWidth={{ xs: true, sm: false }}
             >
               {t('home.registerButton')}
             </Button>
@@ -123,41 +155,38 @@ export default function HomePage() {
 
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: 'repeat(2, 1fr)',
+                md: 'repeat(3, 1fr)',
+              },
+              gap: 4,
               mt: 6,
-              width: '100%',
+              maxWidth: 1200,
+              mx: 'auto',
+              px: 2,
             }}
           >
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 3,
-                flexWrap: 'nowrap',
-                justifyContent: 'center',
-                maxWidth: 1120,
-              }}
-            >
-              {features.map((feature, index) => (
-                <Card
-                  key={index}
-                  sx={{
-                    width: 260,
-                    height: 340,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    borderRadius: 3,
-                    border: '1px solid',
-                    borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'grey.100',
-                    flexShrink: 0,
-                    bgcolor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'background.paper',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: isDark ? '0 12px 24px rgba(0, 0, 0, 0.4)' : 6,
-                    },
-                  }}
-                >
+            {features.map((feature, index) => (
+              <Card
+                key={index}
+                sx={{
+                  height: { xs: 'auto', md: 340 },
+                  minHeight: { xs: 280, md: 340 },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderRadius: 3,
+                  border: '1px solid',
+                  borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'grey.100',
+                  bgcolor: isDark ? 'rgba(255, 255, 255, 0.05)' : 'background.paper',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: isDark ? '0 12px 24px rgba(0, 0, 0, 0.4)' : 6,
+                  },
+                }}
+              >
                   <CardContent
                     sx={{
                       height: '100%',
@@ -215,7 +244,6 @@ export default function HomePage() {
                   </CardContent>
                 </Card>
               ))}
-            </Box>
           </Box>
         </Box>
       </Container>

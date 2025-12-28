@@ -28,6 +28,8 @@ import {
   Dashboard as DashboardIcon,
   Receipt,
   Flag,
+  AccountBalanceWallet,
+  Repeat,
 } from '@mui/icons-material'
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
@@ -87,6 +89,8 @@ export default function Header() {
     { label: t('nav.dashboard'), path: '/dashboard', icon: <DashboardIcon /> },
     { label: t('nav.transactions'), path: '/transactions', icon: <Receipt /> },
     { label: t('nav.goals'), path: '/goals', icon: <Flag /> },
+    { label: t('nav.budgets') || 'Бюджеты', path: '/budgets', icon: <AccountBalanceWallet /> },
+    { label: t('nav.recurring') || 'Подписки', path: '/recurring', icon: <Repeat /> },
   ]
 
   const languages = [

@@ -69,10 +69,9 @@ export const getAnalytics = async (req: Request, res: Response) => {
     const sortedMonths = Object.keys(monthlyData).sort().slice(-6)
     const monthlyChartData = sortedMonths.map(month => {
       const [year, monthNum] = month.split('-')
-      const monthNames = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
 
       return {
-        month: monthNames[parseInt(monthNum) - 1],
+        month: monthNum,
         income: Math.round(monthlyData[month].income),
         expense: Math.round(monthlyData[month].expense)
       }

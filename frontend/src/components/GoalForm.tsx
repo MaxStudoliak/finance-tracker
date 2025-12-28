@@ -9,6 +9,7 @@ import {
   Box
 } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import api from '../services/api'
 
 interface Goal {
   id: string
@@ -58,25 +59,18 @@ export default function GoalForm({ open, onClose, onSuccess, goal }: Props) {
     setLoading(true)
 
     try {
-      const url = goal
-        ? `http://localhost:5001/api/goals/${goal.id}`
-        : 'http://localhost:5001/api/goals'
+      const data = {
+        ...formData,
+        targetAmount: parseFloat(formData.targetAmount),
+        currentAmount: parseFloat(formData.currentAmount),
+        deadline: formData.deadline || null
+      }
 
-      const response = await fetch(url, {
-        method: goal ? 'PUT' : 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify({
-          ...formData,
-          targetAmount: parseFloat(formData.targetAmount),
-          currentAmount: parseFloat(formData.currentAmount),
-          deadline: formData.deadline || null
-        })
-      })
-
-      if (!response.ok) throw new Error('Failed to save goal')
+      if (goal) {
+        await api.put(`/goals/${goal.id}`, data)
+      } else {
+        await api.post('/goals', data)
+      }
 
       onSuccess()
       onClose()

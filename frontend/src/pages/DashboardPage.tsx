@@ -16,6 +16,7 @@ import { useThemeStore } from '../store/themeStore'
 import { formatCurrency } from '../utils/currency'
 import Header from '../components/Header'
 import AIInsights from '../components/AIInsights'
+import AIPredictions from '../components/AIPredictions'
 import { useTranslation } from 'react-i18next'
 
 interface Analytics {
@@ -36,6 +37,51 @@ interface Analytics {
 }
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658', '#ff7c7c']
+
+// Mapping from localized category names to English keys
+const CATEGORY_NAME_TO_KEY: Record<string, string> = {
+  // Russian
+  'еда': 'food',
+  'транспорт': 'transport',
+  'развлечения': 'entertainment',
+  'коммунальные услуги': 'utilities',
+  'здоровье': 'healthcare',
+  'покупки': 'shopping',
+  'образование': 'education',
+  'зарплата': 'salary',
+  'фриланс': 'freelance',
+  'инвестиции': 'investment',
+  'подарок': 'gift',
+  'другое': 'other',
+  // Ukrainian
+  'їжа': 'food',
+  'комунальні послуги': 'utilities',
+  "здоров'я": 'healthcare',
+  'розваги': 'entertainment',
+  'освіта': 'education',
+  'фріланс': 'freelance',
+  'інвестиції': 'investment',
+  'подарунок': 'gift',
+  'інше': 'other',
+  // English (already keys)
+  'food': 'food',
+  'transport': 'transport',
+  'entertainment': 'entertainment',
+  'utilities': 'utilities',
+  'healthcare': 'healthcare',
+  'shopping': 'shopping',
+  'education': 'education',
+  'salary': 'salary',
+  'freelance': 'freelance',
+  'investment': 'investment',
+  'gift': 'gift',
+  'other': 'other',
+}
+
+const getCategoryKey = (category: string) => {
+  const normalized = category.toLowerCase().trim()
+  return CATEGORY_NAME_TO_KEY[normalized] || normalized.replace(/\s+/g, '_')
+}
 
 export default function DashboardPage() {
   const { mode, currency } = useThemeStore()
@@ -70,24 +116,25 @@ export default function DashboardPage() {
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
       <Header />
 
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 }, px: { xs: 2, sm: 3 } }}>
         <Typography
           variant="h4"
           gutterBottom
           sx={{
             fontWeight: 700,
+            fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.125rem' },
             background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            mb: 4
+            mb: { xs: 2, md: 4 }
           }}
         >
           {t('dashboard.title')}
         </Typography>
 
         {/* Summary Cards */}
-        <Grid container spacing={3} sx={{ mb: 4 }}>
+        <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: { xs: 2, md: 4 } }}>
           <Grid item xs={12} md={4}>
             <Card
               sx={{
@@ -235,7 +282,7 @@ export default function DashboardPage() {
         </Grid>
 
         {/* Charts */}
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, sm: 3 }}>
           {/* Pie Chart */}
           <Grid item xs={12} md={6}>
             <Card
@@ -269,16 +316,16 @@ export default function DashboardPage() {
                         cx="50%"
                         cy="50%"
                         labelLine={false}
-                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                        label={({ name, percent }) => `${t(`transactions.categories.${getCategoryKey(name)}`)} ${(percent * 100).toFixed(0)}%`}
                         outerRadius={80}
                         fill="#8884d8"
                         dataKey="value"
                       >
-                        {analytics.categoryData.map((entry, index) => (
+                        {analytics.categoryData.map((_entry, index) => (
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
                       </Pie>
-                      <Tooltip />
+                      <Tooltip formatter={(value: number, name: string) => [value, t(`transactions.categories.${getCategoryKey(name as string)}`)]} />
                     </PieChart>
                   </ResponsiveContainer>
                 ) : (
@@ -319,9 +366,14 @@ export default function DashboardPage() {
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={analytics.monthlyData}>
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="month" />
+                      <XAxis
+                        dataKey="month"
+                        tickFormatter={(value) => t(`months.${value}`)}
+                      />
                       <YAxis />
-                      <Tooltip />
+                      <Tooltip
+                        labelFormatter={(value) => t(`months.${value}`)}
+                      />
                       <Legend />
                       <Bar dataKey="income" fill="#10b981" name={t('dashboard.income')} />
                       <Bar dataKey="expense" fill="#ef4444" name={t('dashboard.expenses')} />
@@ -385,10 +437,10 @@ export default function DashboardPage() {
                     <Typography
                       variant="h5"
                       fontWeight={700}
-                      color={(analytics?.comparison.changePercent ?? 0) > 0 ? 'error.main' : 'success.main'}
+                      color={(analytics?.comparison?.changePercent ?? 0) > 0 ? 'error.main' : 'success.main'}
                     >
-                      {analytics?.comparison.changePercent > 0 ? '+' : ''}
-                      {analytics?.comparison.changePercent}%
+                      {(analytics?.comparison?.changePercent ?? 0) > 0 ? '+' : ''}
+                      {analytics?.comparison?.changePercent ?? 0}%
                     </Typography>
                   </Box>
                 </Box>
@@ -477,9 +529,13 @@ export default function DashboardPage() {
             </Card>
           </Grid>
 
-          {/* AI Insights */}
-          <Grid item xs={12}>
+          {/* AI Insights & Predictions */}
+          <Grid item xs={12} md={6}>
             <AIInsights />
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <AIPredictions />
           </Grid>
         </Grid>
       </Container>

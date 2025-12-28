@@ -114,25 +114,26 @@ export default function RegisterPage() {
         }}
       />
 
-      <Container maxWidth="sm" sx={{ display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+      <Container maxWidth="sm" sx={{ display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1, px: { xs: 2, sm: 3 } }}>
         <Paper
           elevation={24}
           sx={{
-            p: 5,
+            p: { xs: 3, sm: 4, md: 5 },
             width: '100%',
-            borderRadius: 4,
+            borderRadius: { xs: 3, md: 4 },
             background: isDark ? 'rgba(26, 26, 46, 0.95)' : 'rgba(255, 255, 255, 0.95)',
             backdropFilter: 'blur(10px)',
             transition: 'background 0.3s ease',
           }}
         >
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 4 } }}>
             <Typography
               variant="h3"
               component="h1"
               gutterBottom
               sx={{
                 fontWeight: 800,
+                fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' },
                 background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
@@ -143,7 +144,10 @@ export default function RegisterPage() {
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'text.secondary' }}
+              sx={{
+                fontSize: { xs: '0.9rem', md: '1rem' },
+                color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'text.secondary'
+              }}
             >
               {t('register.subtitle')}
             </Typography>
@@ -167,6 +171,10 @@ export default function RegisterPage() {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: 2,
                 },
+                '& .MuiInputBase-input': {
+                  fontSize: { xs: '16px', md: '1rem' },
+                  minHeight: { xs: '48px', md: 'auto' },
+                },
               }}
             />
 
@@ -181,6 +189,10 @@ export default function RegisterPage() {
               sx={{
                 '& .MuiOutlinedInput-root': {
                   borderRadius: 2,
+                },
+                '& .MuiInputBase-input': {
+                  fontSize: { xs: '16px', md: '1rem' },
+                  minHeight: { xs: '48px', md: 'auto' },
                 },
               }}
             />
@@ -197,6 +209,10 @@ export default function RegisterPage() {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: 2,
                 },
+                '& .MuiInputBase-input': {
+                  fontSize: { xs: '16px', md: '1rem' },
+                  minHeight: { xs: '48px', md: 'auto' },
+                },
               }}
             />
 
@@ -207,10 +223,11 @@ export default function RegisterPage() {
               size="large"
               disabled={loading}
               sx={{
-                mt: 4,
+                mt: { xs: 3, md: 4 },
                 mb: 2,
                 py: 1.5,
-                fontSize: '1.1rem',
+                minHeight: 48,
+                fontSize: { xs: '1rem', md: '1.1rem' },
                 fontWeight: 600,
                 borderRadius: 2,
                 background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',

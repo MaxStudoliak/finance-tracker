@@ -82,6 +82,24 @@ export default function TransactionsPage() {
     }
   }
 
+  // Функция для перевода описаний автоматических транзакций
+  const translateDescription = (description: string | null): string => {
+    if (!description) return '-'
+
+    // Проверяем, начинается ли описание с [AUTO]
+    if (description.startsWith('[AUTO]')) {
+      const autoTexts: Record<string, string> = {
+        en: 'Automatic transaction:',
+        ru: 'Автоматическая транзакция:',
+        uk: 'Автоматична транзакція:'
+      }
+      const autoText = autoTexts[language] || autoTexts['en']
+      return description.replace('[AUTO]', autoText)
+    }
+
+    return description
+  }
+
   const fetchTransactions = async () => {
     try {
       const response = await api.get('/transactions')
@@ -151,12 +169,20 @@ export default function TransactionsPage() {
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
       <Header />
 
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 2, sm: 3, md: 4 }, px: { xs: 2, sm: 3 } }}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between',
+          alignItems: { xs: 'stretch', sm: 'center' },
+          mb: { xs: 2, md: 4 },
+          gap: 2
+        }}>
           <Typography
             variant="h4"
             sx={{
               fontWeight: 700,
+              fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.125rem' },
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
@@ -169,7 +195,9 @@ export default function TransactionsPage() {
             variant="contained"
             startIcon={<Add />}
             onClick={() => setFormOpen(true)}
+            fullWidth={{ xs: true, sm: false }}
             sx={{
+              minHeight: 48,
               background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
               '&:hover': {
                 background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
@@ -217,9 +245,13 @@ export default function TransactionsPage() {
             component={Paper}
             sx={{
               borderRadius: 3,
+              overflowX: 'auto',
               background: mode === 'dark'
                 ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%)'
                 : 'linear-gradient(135deg, rgba(99, 102, 241, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%)',
+              '& .MuiTable-root': {
+                minWidth: { xs: 650, md: 'auto' },
+              },
             }}
           >
             <Table>
@@ -247,7 +279,7 @@ export default function TransactionsPage() {
                         {format(new Date(transaction.date), 'dd MMM yyyy', { locale: getDateLocale() })}
                       </TableCell>
                       <TableCell>{t(`transactions.categories.${getCategoryKey(transaction.category)}`)}</TableCell>
-                      <TableCell>{transaction.description || '-'}</TableCell>
+                      <TableCell>{translateDescription(transaction.description)}</TableCell>
                       <TableCell>
                         <Chip
                           label={transaction.type === 'income' ? t('transactions.income') : t('transactions.expense')}

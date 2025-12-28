@@ -14,8 +14,8 @@ import { useThemeStore } from '../store/themeStore'
 import api from '../services/api'
 
 export default function AIInsights() {
-  const { t } = useTranslation()
-  const { mode } = useThemeStore()
+  const { t, i18n } = useTranslation()
+  const { mode, currency } = useThemeStore()
   const [advice, setAdvice] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -25,7 +25,10 @@ export default function AIInsights() {
     setError(null)
 
     try {
-      const response = await api.post('/ai/analyze')
+      const response = await api.post('/ai/analyze', {
+        language: i18n.language,
+        currency: currency
+      })
       setAdvice(response.data.advice)
     } catch (err: any) {
       setError(
@@ -59,9 +62,23 @@ export default function AIInsights() {
       }}
     >
       <CardContent sx={{ flexGrow: 1 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-          <Psychology color="primary" sx={{ mr: 1, fontSize: 32 }} />
-          <Typography variant="h6">{t('ai.advisor')}</Typography>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+          <Box
+            sx={{
+              width: 40,
+              height: 40,
+              borderRadius: 2,
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Psychology sx={{ color: 'white' }} />
+          </Box>
+          <Typography variant="h6" fontWeight={600}>
+            {t('ai.advisor')}
+          </Typography>
         </Box>
 
         {!advice && !loading && (
@@ -73,6 +90,12 @@ export default function AIInsights() {
               variant="contained"
               startIcon={<Psychology />}
               onClick={getAIAdvice}
+              sx={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%)',
+                },
+              }}
             >
               {t('ai.getInsights')}
             </Button>
@@ -93,13 +116,23 @@ export default function AIInsights() {
 
         {advice && (
           <Box>
-            <Typography variant="body1" sx={{ whiteSpace: 'pre-line', mb: 2 }}>
+            <Typography variant="body2" sx={{ whiteSpace: 'pre-line', mb: 2 }}>
               {advice}
             </Typography>
             <Button
+              variant="outlined"
               size="small"
               onClick={getAIAdvice}
               disabled={loading}
+              fullWidth
+              sx={{
+                borderColor: mode === 'dark' ? 'rgba(99, 102, 241, 0.5)' : 'rgba(99, 102, 241, 0.4)',
+                color: mode === 'dark' ? '#a5b4fc' : '#667eea',
+                '&:hover': {
+                  borderColor: mode === 'dark' ? 'rgba(99, 102, 241, 0.7)' : 'rgba(99, 102, 241, 0.6)',
+                  background: mode === 'dark' ? 'rgba(99, 102, 241, 0.1)' : 'rgba(99, 102, 241, 0.05)',
+                },
+              }}
             >
               {t('ai.refresh')}
             </Button>

@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import { getTheme } from './theme'
+import { getTheme } from './utils/theme'
 import { useThemeStore } from './store/themeStore'
-import App from './App'
-import './i18n'
+import App from './pages/App'
+import './services/i18n'
 
 function AppWrapper() {
   const mode = useThemeStore((state) => state.mode)

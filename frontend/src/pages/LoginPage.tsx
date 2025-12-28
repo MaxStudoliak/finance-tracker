@@ -9,7 +9,9 @@ import {
   Box,
   Alert,
   Link,
+  Divider,
 } from '@mui/material'
+import GoogleIcon from '@mui/icons-material/Google'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -63,6 +65,10 @@ export default function LoginPage() {
     }
   }
 
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:5001/api/auth/google'
+  }
+
   return (
     <Box
       sx={{
@@ -112,25 +118,26 @@ export default function LoginPage() {
         }}
       />
 
-      <Container maxWidth="sm" sx={{ display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+      <Container maxWidth="sm" sx={{ display: 'flex', alignItems: 'center', position: 'relative', zIndex: 1, px: { xs: 2, sm: 3 } }}>
         <Paper
           elevation={24}
           sx={{
-            p: 5,
+            p: { xs: 3, sm: 4, md: 5 },
             width: '100%',
-            borderRadius: 4,
+            borderRadius: { xs: 3, md: 4 },
             background: isDark ? 'rgba(26, 26, 46, 0.95)' : 'rgba(255, 255, 255, 0.95)',
             backdropFilter: 'blur(10px)',
             transition: 'background 0.3s ease',
           }}
         >
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 4 } }}>
             <Typography
               variant="h3"
               component="h1"
               gutterBottom
               sx={{
                 fontWeight: 800,
+                fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' },
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
@@ -141,7 +148,10 @@ export default function LoginPage() {
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'text.secondary' }}
+              sx={{
+                fontSize: { xs: '0.9rem', md: '1rem' },
+                color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'text.secondary'
+              }}
             >
               {t('login.subtitle')}
             </Typography>
@@ -166,6 +176,10 @@ export default function LoginPage() {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: 2,
                 },
+                '& .MuiInputBase-input': {
+                  fontSize: { xs: '16px', md: '1rem' },
+                  minHeight: { xs: '48px', md: 'auto' },
+                },
               }}
             />
 
@@ -181,6 +195,10 @@ export default function LoginPage() {
                 '& .MuiOutlinedInput-root': {
                   borderRadius: 2,
                 },
+                '& .MuiInputBase-input': {
+                  fontSize: { xs: '16px', md: '1rem' },
+                  minHeight: { xs: '48px', md: 'auto' },
+                },
               }}
             />
 
@@ -191,10 +209,11 @@ export default function LoginPage() {
               size="large"
               disabled={loading}
               sx={{
-                mt: 4,
+                mt: { xs: 3, md: 4 },
                 mb: 2,
                 py: 1.5,
-                fontSize: '1.1rem',
+                minHeight: 48,
+                fontSize: { xs: '1rem', md: '1.1rem' },
                 fontWeight: 600,
                 borderRadius: 2,
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
@@ -204,6 +223,35 @@ export default function LoginPage() {
               }}
             >
               {loading ? t('login.loggingIn') : t('login.loginButton')}
+            </Button>
+
+            <Divider sx={{ my: 3 }}>
+              <Typography variant="body2" sx={{ color: isDark ? 'rgba(255, 255, 255, 0.5)' : 'text.secondary' }}>
+                {t('login.or') || 'или'}
+              </Typography>
+            </Divider>
+
+            <Button
+              variant="outlined"
+              fullWidth
+              size="large"
+              startIcon={<GoogleIcon />}
+              onClick={handleGoogleLogin}
+              sx={{
+                mb: 2,
+                py: 1.5,
+                fontSize: '1rem',
+                fontWeight: 600,
+                borderRadius: 2,
+                borderColor: isDark ? 'rgba(255, 255, 255, 0.23)' : undefined,
+                color: isDark ? '#fff' : undefined,
+                '&:hover': {
+                  borderColor: '#667eea',
+                  background: 'rgba(102, 126, 234, 0.08)',
+                },
+              }}
+            >
+              {t('login.googleLogin') || 'Войти через Google'}
             </Button>
 
             <Box sx={{ textAlign: 'center' }}>

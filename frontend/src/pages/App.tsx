@@ -1,12 +1,15 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { useAuthStore } from './store/authStore'
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import DashboardPage from './pages/DashboardPage'
-import TransactionsPage from './pages/TransactionsPage'
-import GoalsPage from './pages/GoalsPage'
-import ProfilePage from './pages/ProfilePage'
+import { useAuthStore } from '../store/authStore'
+import HomePage from './HomePage'
+import LoginPage from './LoginPage'
+import RegisterPage from './RegisterPage'
+import DashboardPage from './DashboardPage'
+import TransactionsPage from './TransactionsPage'
+import GoalsPage from './GoalsPage'
+import ProfilePage from './ProfilePage'
+import AuthCallbackPage from './AuthCallbackPage'
+import BudgetsPage from './BudgetsPage'
+import RecurringTransactionsPage from './RecurringTransactionsPage'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
@@ -14,11 +17,19 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
 }
 
 function App() {
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated)
+
   return (
     <Routes>
+      {/* Корневой маршрут - редирект в зависимости от авторизации */}
+      <Route
+        path="/"
+        element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Navigate to="/home" replace />}
+      />
       <Route path="/home" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/auth/callback" element={<AuthCallbackPage />} />
       <Route
         path="/dashboard"
         element={
@@ -40,6 +51,22 @@ function App() {
         element={
           <PrivateRoute>
             <GoalsPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/budgets"
+        element={
+          <PrivateRoute>
+            <BudgetsPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/recurring"
+        element={
+          <PrivateRoute>
+            <RecurringTransactionsPage />
           </PrivateRoute>
         }
       />

@@ -43,7 +43,7 @@ passport.use(
           });
         }
 
-        return done(null, user);
+        return done(null, user || false);
       } catch (error) {
         return done(error as Error, undefined);
       }

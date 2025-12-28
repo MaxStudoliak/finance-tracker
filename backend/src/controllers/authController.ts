@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
+import jwt, { SignOptions } from 'jsonwebtoken'
 import { prisma } from '../prisma'
 
 export const register = async (req: Request, res: Response) => {
@@ -41,9 +41,9 @@ export const register = async (req: Request, res: Response) => {
 
     // Генерация JWT токена
     const token = jwt.sign(
-      { userId: user.id, email: user.email },
-      process.env.JWT_SECRET || 'secret',
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+      { userId: user.id },
+      process.env.JWT_SECRET!,
+      { expiresIn: '7d' } as SignOptions
     )
 
     res.status(201).json({
@@ -84,9 +84,9 @@ export const login = async (req: Request, res: Response) => {
 
     // Генерация JWT токена
     const token = jwt.sign(
-      { userId: user.id, email: user.email },
-      process.env.JWT_SECRET || 'secret',
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+      { userId: user.id },
+      process.env.JWT_SECRET!,
+      { expiresIn: '7d' } as SignOptions
     )
 
     res.json({
@@ -143,9 +143,9 @@ export const googleCallback = async (req: Request, res: Response) => {
 
     // Генерация JWT токена
     const token = jwt.sign(
-      { userId: user.id, email: user.email },
-      process.env.JWT_SECRET || 'secret',
-      { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+      { userId: user.id },
+      process.env.JWT_SECRET!,
+      { expiresIn: '7d' } as SignOptions
     )
 
     // Редирект на frontend с токеном

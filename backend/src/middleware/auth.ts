@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
+import { prisma } from '../prisma'
 
 interface JwtPayload {
   userId: string
-  email: string
 }
 
-export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.headers.authorization?.split(' ')[1] // Bearer TOKEN
 
@@ -19,10 +19,15 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
       process.env.JWT_SECRET || 'secret'
     ) as JwtPayload
 
-    req.user = {
-      id: decoded.userId,
-      email: decoded.email
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.userId }
+    })
+
+    if (!user) {
+      return res.status(401).json({ error: 'Пользователь не найден' })
     }
+
+    req.user = user
 
     next()
   } catch (error) {

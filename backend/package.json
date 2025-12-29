@@ -3,12 +3,12 @@
     "version": "1.0.0",
     "description": "Backend API for Finance Tracker",
     "main": "server.ts",
-    "scripts": {
-        "build": "prisma generate && tsc",
-        "start": "prisma db push --accept-data-loss && node dist/server.js",
-        "dev": "tsx server.ts"
-    },
-    "dependencies": {
+  "scripts": {
+    "build": "prisma generate && tsc",
+    "start": "yarn build && prisma db push --accept-data-loss && node dist/server.js",
+    "dev": "tsx src/server.ts"
+  },
+  "dependencies": {
         "@google/generative-ai": "^0.24.1",
         "@prisma/adapter-libsql": "^7.2.0",
         "@prisma/client": "5.22.0",

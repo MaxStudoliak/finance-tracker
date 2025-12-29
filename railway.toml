@@ -1,8 +1,0 @@
-[build]
-builder = "nixpacks"
-
-[build.nixpacksBuildCommand]
-cmd = "yarn workspace finance-tracker-backend build"
-
-[deploy]
-startCommand = "yarn workspace finance-tracker-backend start"

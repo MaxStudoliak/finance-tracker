@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import { useAuthStore } from '../store/authStore';
+import api from '../services/api';
 
 const AuthCallbackPage = () => {
   const navigate = useNavigate();
@@ -13,26 +14,22 @@ const AuthCallbackPage = () => {
     const error = searchParams.get('error');
 
     if (error) {
-      // Ошибка аутентификации
       navigate('/login?error=google_auth_failed');
       return;
     }
 
     if (token) {
-      // Сохраняем токен и получаем данные пользователя
       localStorage.setItem('token', token);
 
-      // Получаем данные пользователя
-      fetch('http://localhost:5001/api/auth/me', {
+      api.get('/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.user) {
-            setAuth(data.user, token);
-            navigate('/');
+        .then((res) => {
+          if (res.data) {
+            setAuth(res.data, token);
+            navigate('/dashboard');
           } else {
             navigate('/login?error=auth_failed');
           }
